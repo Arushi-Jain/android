@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">TB Map</string>
+    <string name="number"><u>+91</u></string>
+
+    <string-array name="countries">
+        <item>+91</item>
+        <item>+92</item>
+        <item>+93</item>
+        <item>+94</item>
+    </string-array>
+
+    <string-array name="options">
+        <item>Option 1</item>
+        <item>Data 2</item>
+        <item>Data 3</item>
+        <item>Data 4</item>
+        <item>Data 5</item>
+    </string-array>
+
+    <string-array name="state">
+        <item>State</item>
+        <item>Data 2</item>
+        <item>Data 3</item>
+        <item>Data 4</item>
+        <item>Data 5</item>
+    </string-array>
+
+    <string-array name="city">
+        <item>City</item>
+        <item>Data 2</item>
+        <item>Data 3</item>
+        <item>Data 4</item>
+        <item>Data 5</item>
+    </string-array>
+
+
+    <string-array name="bankaccount">
+        <item>Select Bank Account</item>
+        <item>Data 2</item>
+        <item>Data 3</item>
+        <item>Data 4</item>
+        <item>Data 5</item>
+    </string-array>
+</resources>
