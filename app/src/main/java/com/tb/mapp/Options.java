@@ -85,7 +85,8 @@ public class Options extends AppCompatActivity {
 
     void submitToFirebase(Bundle extras) {
         Map<String, String> data = convertBundleToMap(extras);
-        Log.d("Inside firebase", "Final data passed to firebase: " + data);
+        Log.d("Inside firebase", "Final data passed to firebase: " +
+                FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
@@ -93,7 +94,8 @@ public class Options extends AppCompatActivity {
                 .build();
         db.setFirestoreSettings(settings);
 
-        db.collection("users").document("8376811133")
+
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())
                 .set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
