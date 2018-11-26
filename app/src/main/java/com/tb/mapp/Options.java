@@ -1,6 +1,7 @@
 package com.tb.mapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +10,18 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.io.Serializable;
-import java.lang.reflect.Array;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class Options extends AppCompatActivity {
     private CheckBox chkbox1, chkbox2, chkbox3, chkbox4;
@@ -33,39 +43,70 @@ public class Options extends AppCompatActivity {
         text4 = findViewById(R.id.item4);
         btn = findViewById(R.id.submit);
 
+    }
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = getIntent();
-                Bundle extras = intent.getExtras();
+    void submitlistener (View view){
 
-                if (chkbox1.isChecked()) {
-                    extras.putString("item1",text1.getText().toString());
-                }
-                if (chkbox2.isChecked()) {
-                    extras.putString("item2",text2.getText().toString());
-                }
-                if (chkbox3.isChecked()) {
-                    extras.putString("item3",text3.getText().toString());
-                }
-                if (chkbox4.isChecked()) {
-                    extras.putString("item4",text4.getText().toString());
-                }
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
 
-                Log.d("Inside submitDetails", "Final extras passed to firebase:" + extras);
+        if (chkbox1.isChecked()) {
+            extras.putString("item1",text1.getText().toString());
+        }
+        if (chkbox2.isChecked()) {
+            extras.putString("item2",text2.getText().toString());
+        }
+        if (chkbox3.isChecked()) {
+            extras.putString("item3",text3.getText().toString());
+        }
+        if (chkbox4.isChecked()) {
+            extras.putString("item4",text4.getText().toString());
+        }
 
-                Serializable result = extras.getSerializable("data");
-                HashMap<String,String> output = (HashMap<String, String>) result;
-
-                submitToFirebase(output);
-
-            }
-        });
+        // Log.d("Inside submitDetails", "Final extras passed to firebase:" + extras);
+        submitToFirebase(extras);
+        Intent i = new Intent(Options.this, ValidateProfile.class);
+        startActivity(i);
 
     }
 
-    void submitToFirebase(HashMap extras) {
-        Log.d("Inside submitDetails", "Final extras passed to firebase:" + extras);
+    public void onBackPressed(View view) {
+        super.onBackPressed();
+    }
+
+    private static Map<String, String> convertBundleToMap(Bundle extras) {
+        Map<String, String> map = new HashMap<>();
+        for (String key : extras.keySet()) {
+            map.put(key, extras.getString(key));
+        }
+        Log.d("Inside converttomap", "Final map returned:" + map);
+        return map;
+    }
+
+    void submitToFirebase(Bundle extras) {
+        Map<String, String> data = convertBundleToMap(extras);
+        Log.d("Inside firebase", "Final data passed to firebase: " + data);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setTimestampsInSnapshotsEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
+
+        db.collection("users").document("8376811133")
+                .set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Inside firebase", "DocumentSnapshot added with ID: " + aVoid);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Inside firebase", "Error adding document", e);
+                    }
+                });
+
     }
 }

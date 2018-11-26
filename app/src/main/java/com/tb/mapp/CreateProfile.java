@@ -25,22 +25,21 @@ public class CreateProfile extends AppCompatActivity {
         editText2 = findViewById(R.id.city);
         Log.d("Inside craeteprofile", "outside button listener:" + button);
         System.out.println("Inside craeteprofile" + "outside button listener:" + button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Inside craeteprofile", "inside button listener:" + button);
-                String name = editText1.getText().toString().trim();
-                String city = editText2.getText().toString().trim();
-                Intent intent = new Intent(CreateProfile.this, Details.class);
 
-                Bundle extras = new Bundle();
-                extras.putString("name", name);
-                extras.putString("city", city);
+    }
 
-                Log.d("Inside craeteprofile", "outside button listener before extras:" + extras);
-                intent.putExtras(extras);
-                startActivity(intent);
-            }
-        });
+    void profileContinue(View view) {
+        Log.d("Inside craeteprofile", "inside button listener:" + button);
+        String name = editText1.getText().toString().trim();
+        String city = editText2.getText().toString().trim();
+        Intent intent = new Intent(CreateProfile.this, Details.class);
+
+        Bundle extras = new Bundle();
+        extras.putString("name", name);
+        extras.putString("city", city);
+
+        Log.d("Inside craeteprofile", "outside button listener before extras:" + extras);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

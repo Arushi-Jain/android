@@ -41,4 +41,5 @@
         <item>Data 4</item>
         <item>Data 5</item>
     </string-array>
+    <string name="title_activity_validate_profile">ValidateProfile</string>
 </resources>
