@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+
         <activity android:name=".MainActivity" />
         <activity android:name=".SignIn" />
         <activity android:name=".VerifyOPT" />
@@ -28,7 +35,11 @@
         </activity>
         <activity android:name=".ValidateProfile" />
         <activity android:name=".VerifiedProfile"></activity>
+        <service android:name=".java.FirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
-    <uses-permission android:name="android.permission.SEND_SMS" />
 
 </manifest>

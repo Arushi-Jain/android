@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,8 +86,8 @@ public class Options extends AppCompatActivity {
 
     void submitToFirebase(Bundle extras) {
         Map<String, String> data = convertBundleToMap(extras);
-        Log.d("Inside firebase", "Final data passed to firebase: " +
-                FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+        data.put("InstanceId", FirebaseInstanceId.getInstance().getToken());
+        Log.d("Inside firebase", "Final data passed to firebase: " + data);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
@@ -96,6 +97,7 @@ public class Options extends AppCompatActivity {
 
 
         db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())
+                .collection("ProfileDetails").document("profile")
                 .set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
