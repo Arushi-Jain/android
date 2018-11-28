@@ -24,11 +24,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/back"
-                    android:layout_gravity="center"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/back" />-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,14 +63,15 @@
 
 
             <Spinner
-                android:layout_marginTop="20dp"
+                android:id="@+id/bankAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_curve"
                 android:entries="@array/bankaccount"
-                android:padding="7dp"
-                android:background="@drawable/background_curve">
+                android:padding="7dp">
 
 
             </Spinner>
@@ -132,14 +133,15 @@
                 android:layout_marginLeft="27dp">
 
                 <TextView
+                    android:id="@+id/gstn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="left"
                     android:text="Have GTSN Number?"
                     android:textColor="#5c5c5c"
-                    android:textSize="17sp"
-                    android:layout_gravity="center"
-                    android:gravity="left"
-                    android:layout_weight="1"/>
+                    android:textSize="17sp" />
 
                 <Switch
                     android:layout_width="wrap_content"
@@ -152,15 +154,16 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="Submit"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"
-                android:textAllCaps="false"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/button"/>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button"
+                android:onClick="submitdetails"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
