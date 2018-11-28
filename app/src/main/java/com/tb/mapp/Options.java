@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,8 +67,6 @@ public class Options extends AppCompatActivity {
 
         // Log.d("Inside submitDetails", "Final extras passed to firebase:" + extras);
         submitToFirebase(extras);
-        Intent i = new Intent(Options.this, ValidateProfile.class);
-        startActivity(i);
 
     }
 
@@ -96,19 +95,24 @@ public class Options extends AppCompatActivity {
         db.setFirestoreSettings(settings);
 
 
-        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())
+        db.collection("users").document("1234567890")
                 .collection("ProfileDetails").document("profile")
                 .set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("Inside firebase", "DocumentSnapshot added with ID: " + aVoid);
+                        Intent i = new Intent(Options.this, ValidateProfile.class);
+                        startActivity(i);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("Inside firebase", "Error adding document", e);
+                        Toast.makeText(getApplicationContext(),
+                                "Could not submit the details.Please try again",
+                                Toast.LENGTH_SHORT);
                     }
                 });
 

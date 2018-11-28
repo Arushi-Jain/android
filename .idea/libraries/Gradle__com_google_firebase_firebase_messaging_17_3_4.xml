@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-messaging-17.3.4">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.4.aar/f603e345a04f8a4f8ba89d5b52671c00/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.4.aar/f603e345a04f8a4f8ba89d5b52671c00/jars/classes.jar!/" />
+      <root url="file://E:/demoo_vue/gradle cache/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.4.aar/3a9a4eeb1565285b080cadff9fd5f987/res" />
+      <root url="jar://E:/demoo_vue/gradle cache/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.4.aar/3a9a4eeb1565285b080cadff9fd5f987/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-messaging/17.3.4/5a0ecbcab24f4136e8ae8a99f2fd80a3a05a4a68/firebase-messaging-17.3.4-javadoc.jar!/" />
+      <root url="jar://E:/demoo_vue/gradle cache/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-messaging/17.3.4/5a0ecbcab24f4136e8ae8a99f2fd80a3a05a4a68/firebase-messaging-17.3.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES />
   </library>

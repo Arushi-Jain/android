@@ -15,7 +15,5 @@ public class ValidateProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_validate_profile);
 
-//        SmsManager smsManager = SmsManager.getDefault();
-//        smsManager.sendTextMessage("9721472849", null, "sms message", null, null);
     }
 }
